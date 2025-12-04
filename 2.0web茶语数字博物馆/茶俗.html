@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶语数字博物馆 - 茶俗馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #e8f5e9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #1b5e20;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #2e7d32;
+            font-size: 1.2rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #1b5e20;
+        }
+        
+        .timeline-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, #4caf50, #81c784, #4caf50);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            cursor: pointer;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border: 4px solid #4caf50;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 rgba(76, 175, 80, 0.4);
+        }
+        
+        .timeline-item:hover::after {
+            background-color: #4caf50;
+            transform: scale(1.3);
+            box-shadow: 0 0 0 8px rgba(76, 175, 80, 0.2);
+        }
+        
+        .timeline-item.active::after {
+            background-color: #1b5e20;
+            border-color: #1b5e20;
+            transform: scale(1.2);
+            box-shadow: 0 0 0 6px rgba(27, 94, 32, 0.3);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 25px;
+            background-color: #f1f8e9;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #4caf50, #81c784);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .timeline-content h3 {
+            color: #1b5e20;
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-content h3 {
+            text-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+            transform: scale(1.05);
+        }
+        
+        .timeline-content p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .period-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .period-link:hover {
+            background-color: #2e7d32;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>茶俗馆</h1>
+            <p class="subtitle">探索中国茶文化的历史演变</p>
+            <a href="index.html" class="back-btn">返回首页</a>
+        </header>
+        
+        <div class="timeline-container">
+            <h2>茶史轴图</h2>
+            <p>点击时间轴上的不同时期，了解各个时代的茶俗演变。</p>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>唐代 (618-907)</h3>
+                        <p>唐代是中国茶文化的形成期，陆羽《茶经》问世，茶道开始系统化。</p>
+                        <a href="tang-detail.html" class="period-link">探索唐代茶俗</a>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>宋代 (960-1279)</h3>
+                        <p>宋代茶文化达到鼎盛，点茶法流行，斗茶成为文人雅士的时尚。</p>
+                        <a href="song-detail.html" class="period-link">探索宋代茶俗</a>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>明代 (1368-1644)</h3>
+                        <p>明代开始流行散茶冲泡，茶具更加精美，茶馆文化兴起。</p>
+                        <a href="ming-detail.html" class="period-link">探索明代茶俗</a>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>清代 (1644-1912)</h3>
+                        <p>清代茶文化更加普及，六大茶类基本形成，功夫茶艺日趋成熟。</p>
+                        <a href="qing-detail.html" class="period-link">探索清代茶俗</a>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>现代</h3>
+                        <p>现代茶文化融合传统与创新，茶艺表演、茶文化旅游等新形式不断涌现。</p>
+                        <a href="modern-detail.html" class="period-link">探索现代茶俗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 为时间轴项目添加交互效果
+		
+		// 1. 时间轴点击动画增强
+		document.querySelectorAll('.timeline-item').forEach(item => {
+		    item.addEventListener('click', function(e) {
+		        e.preventDefault();
+		        
+		        // 移除其他项的active状态
+		        document.querySelectorAll('.timeline-item').forEach(el => {
+		            el.classList.remove('active-click');
+		        });
+		        
+		        // 添加点击动画
+		        this.classList.add('active-click');
+		        
+		        // 创建涟漪效果
+		        const ripple = document.createElement('div');
+		        ripple.className = 'ripple-effect';
+		        const rect = this.getBoundingClientRect();
+		        ripple.style.left = (rect.width / 2) + 'px';
+		        ripple.style.top = (rect.height / 2) + 'px';
+		        this.appendChild(ripple);
+		        
+		        setTimeout(() => ripple.remove(), 600);
+		        
+		        // 显示加载动画后跳转
+		        const period = this.getAttribute('data-period');
+		        const link = this.querySelector('.period-link').href;
+		        
+		        showLoadingAnimation(() => {
+		            window.location.href = link;
+		        });
+		    });
+		});
+		
+		// 2. 添加快捷导航
+		const quickNav = document.createElement('div');
+		quickNav.className = 'quick-nav';
+		quickNav.innerHTML = `
+		    <button onclick="scrollToPeriod('tang')">唐</button>
+		    <button onclick="scrollToPeriod('song')">宋</button>
+		    <button onclick="scrollToPeriod('ming')">明</button>
+		    <button onclick="scrollToPeriod('qing')">清</button>
+		    <button onclick="scrollToPeriod('modern')">现</button>
+		`;
+		
+		// 3. 添加时间轴缩放控制
+		const zoomControls = document.createElement('div');
+		zoomControls.className = 'zoom-controls';
+		zoomControls.innerHTML = `
+		    <button onclick="zoomTimeline(0.9)">-</button>
+		    <span>时间轴缩放</span>
+		    <button onclick="zoomTimeline(1.1)">+</button>
+		`;
+		
+		// 4. 添加CSS动画
+		.timeline-item.active-click {
+		    animation: pulse 0.6s ease;
+		}
+		
+		@keyframes pulse {
+		    0% { transform: scale(1); }
+		    50% { transform: scale(1.05); }
+		    100% { transform: scale(1); }
+		}
+		
+		.ripple-effect {
+		    position: absolute;
+		    border-radius: 50%;
+		    background: rgba(76, 175, 80, 0.3);
+		    transform: scale(0);
+		    animation: ripple 0.6s linear;
+		}
+		
+		@keyframes ripple {
+		    to {
+		        transform: scale(4);
+		        opacity: 0;
+		    }
+		}
+		
+		.quick-nav {
+		    position: fixed;
+		    right: 20px;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    display: flex;
+		    flex-direction: column;
+		    gap: 10px;
+		    z-index: 1000;
+		}
+		
+		.zoom-controls {
+		    position: fixed;
+		    left: 20px;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    background: white;
+		    padding: 10px;
+		    border-radius: 10px;
+		    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+		}
+		
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.classList.add('active');
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

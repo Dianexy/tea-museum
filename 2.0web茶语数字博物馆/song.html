@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宋代茶俗 - 茶语数字博物馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #e8f5e9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #1b5e20;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-family: "宋体", "SimSun", "NSimSun", serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #2e7d32;
+            font-size: 1.2rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #1b5e20;
+        }
+        
+        .detail-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-nav {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #a5d6a7;
+        }
+        
+        .nav-item {
+            padding: 12px 24px;
+            background-color: #f1f8e9;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .nav-item.active {
+            background-color: white;
+            border-bottom: 3px solid #1b5e20;
+            color: #1b5e20;
+            font-weight: bold;
+        }
+        
+        .content-section {
+            display: none;
+            padding: 20px;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .scene-image {
+            width: 100%;
+            height: 300px;
+            background-color: #c8e6c9;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        h2 {
+            color: #1b5e20;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #a5d6a7;
+            padding-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            background-color: #f1f8e9;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>宋代茶俗</h1>
+            <p class="subtitle">探索宋代茶文化的鼎盛与创新</p>
+            <a href="tea-customs.html" class="back-btn">返回茶俗馆</a>
+        </header>
+        
+        <div class="detail-container">
+            <div class="detail-nav">
+                <button class="nav-item active" data-target="scene">茶俗场景</button>
+                <button class="nav-item" data-target="origin">茶事溯源</button>
+            </div>
+            
+            <div id="scene" class="content-section active">
+                <h2>宋代茶俗场景</h2>
+                <div class="scene-image">宋代点茶斗茶场景</div>
+                <p>宋代是中国茶文化的鼎盛时期，点茶法取代煮茶法成为主流。将茶叶碾成细末，用沸水冲泡并用茶筅搅打，形成丰富的泡沫。</p>
+                
+                <div class="highlight">
+                    <p>斗茶成为文人雅士的时尚活动，通过比较茶汤颜色、泡沫持久度等评判茶艺高低。斗茶活动促进了茶艺的精进和茶具的发展。</p>
+                </div>
+                
+                <p>宋代还出现了专业的茶肆、茶坊，成为市民社交的重要场所。茶文化从宫廷走向民间，形成了更加丰富的茶俗场景。</p>
+                
+                <p>宋徽宗赵佶著有《大观茶论》，系统阐述了宋代茶艺，推动了茶文化的繁荣发展。宋代茶具也更加精致，出现了建盏等名贵茶器。</p>
+            </div>
+            
+            <div id="origin" class="content-section">
+                <h2>宋代茶事溯源</h2>
+                <p>宋代是中国茶文化的鼎盛时期，茶事活动达到前所未有的高度。</p>
+                
+                <h3>点茶法的兴起</h3>
+                <p>点茶法在宋代成为主流饮茶方式，将茶叶碾成细末，用沸水冲泡并用茶筅搅打，形成丰富的泡沫。这种方法比唐代的煮茶法更加精致。</p>
+                
+                <h3>斗茶文化</h3>
+                <p>斗茶是宋代特有的茶文化活动，文人雅士通过比较茶汤颜色、泡沫持久度等评判茶艺高低。斗茶促进了茶艺的精进和茶具的发展。</p>
+                
+                <h3>茶肆与茶馆</h3>
+                <p>宋代出现了专业的茶肆、茶坊，成为市民社交的重要场所。茶文化从宫廷走向民间，形成了更加丰富的茶俗。</p>
+                
+                <h3>茶书与茶论</h3>
+                <p>宋代茶书大量涌现，蔡襄的《茶录》、宋徽宗的《大观茶论》等系统阐述了宋代茶艺，推动了茶文化的繁荣发展。</p>
+                
+                <div class="highlight">
+                    <p>宋代茶文化的繁荣为后世中国茶文化的发展奠定了重要基础，点茶法后来传入日本，发展成为日本茶道。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 切换内容标签
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除所有active类
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // 添加active类
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+	<!-- 引入宋代点茶斗茶交互模块 -->
+	<script src="js/song-interactive.js"></script>
+	
+	<!-- 添加一些额外的CSS动画 -->
+	<style>
+	    /* 页面加载动画 */
+	    @keyframes pageLoad {
+	        from {
+	            opacity: 0;
+	            transform: translateY(20px);
+	        }
+	        to {
+	            opacity: 1;
+	            transform: translateY(0);
+	        }
+	    }
+	    
+	    .scene-image {
+	        animation: pageLoad 0.8s ease-out;
+	    }
+	    
+	    /* 交互提示 */
+	    .interactive-hint {
+	        text-align: center;
+	        padding: 15px;
+	        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+	        border-radius: 10px;
+	        margin: 20px 0;
+	        border-left: 5px solid #4caf50;
+	        animation: pulseHint 2s infinite;
+	    }
+	    
+	    @keyframes pulseHint {
+	        0%, 100% { opacity: 1; }
+	        50% { opacity: 0.8; }
+	    }
+	</style>
+	
+	<script>
+	    // 页面加载后添加交互提示
+	    document.addEventListener('DOMContentLoaded', function() {
+	        // 在茶俗场景部分添加提示
+	        const sceneSection = document.getElementById('scene');
+	        if (sceneSection) {
+	            const hint = document.createElement('div');
+	            hint.className = 'interactive-hint';
+	            hint.innerHTML = `
+	                💡 <strong>交互体验已启用！</strong> 向下滚动体验：
+	                <br>1. <em>宋代点茶模拟器</em> - 体验七步点茶工艺
+	                <br>2. <em>斗茶小游戏</em> - 与宋代文人比拼茶艺
+	                <br>3. <em>茶具鉴赏</em> - 3D查看宋代茶具
+	                <br>🎮 提示：可使用键盘快捷键（空格、数字键1-3、方向键）
+	            `;
+	            sceneSection.appendChild(hint);
+	        }
+	        
+	        // 添加滚动监听，触发交互动画
+	        let animated = false;
+	        window.addEventListener('scroll', function() {
+	            const sceneImage = document.querySelector('.scene-image');
+	            if (sceneImage && !animated) {
+	                const rect = sceneImage.getBoundingClientRect();
+	                if (rect.top < window.innerHeight * 0.8) {
+	                    sceneImage.style.animation = 'pageLoad 0.8s ease-out';
+	                    animated = true;
+	                }
+	            }
+	        });
+	    });
+	</script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶语数字博物馆 - 首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #e8f5e9;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header {
+            padding: 60px 0 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            color: #1b5e20;
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #4caf50, #81c784);
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #2e7d32;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+        
+        .nav-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #4caf50, #81c784);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card-icon {
+            font-size: 4.5rem;
+            color: #1b5e20;
+            margin-bottom: 25px;
+            transition: transform 0.4s ease;
+        }
+        
+        .nav-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .card-title {
+            font-size: 2rem;
+            color: #1b5e20;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        
+        .nav-card:hover .card-title {
+            color: #2e7d32;
+        }
+        
+        .card-desc {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .interactive-demo {
+            margin: 80px auto 60px;
+            max-width: 800px;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 1.2s ease-out 0.5s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .demo-title {
+            color: #1b5e20;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .tea-leaf {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4caf50, #81c784);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(45deg);
+            margin: 0 auto 20px;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+        
+        .tea-leaf:hover {
+            transform: rotate(45deg) scale(1.3);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .demo-controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .control-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .demo-text {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f1f8e9;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            color: #2e7d32;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+        
+        footer {
+            margin-top: 80px;
+            padding: 30px;
+            color: #2e7d32;
+            border-top: 2px solid #e0f2e1;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-card {
+                width: 90%;
+                max-width: 400px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .loading-animation {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f1f8e9;
+            border-top: 5px solid #4caf50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>茶语数字博物馆</h1>
+            <p class="subtitle">探索中国茶文化的源远流长，品味千年茶韵</p>
+        </header>
+        
+        <div class="nav-cards">
+            <a href="tea-customs.html" class="nav-card" id="customs-card">
+                <div class="card-icon">🍵</div>
+                <h2 class="card-title">茶俗馆</h2>
+                <p class="card-desc">探索中国茶文化的历史演变，了解各个时期的茶俗场景与茶事溯源。</p>
+                <div class="loading-animation" id="loading1"></div>
+            </a>
+            
+            <a href="tea-art.html" class="nav-card" id="art-card">
+                <div class="card-icon">🌿</div>
+                <h2 class="card-title">茶艺馆</h2>
+                <p class="card-desc">探索中国各地特色茶类，了解不同茶叶的冲泡方法与技艺。</p>
+                <div class="loading-animation" id="loading2"></div>
+            </a>
+        </div>
+        
+        <div class="interactive-demo">
+            <h3 class="demo-title">🍃 交互体验：动态茶韵</h3>
+            <div class="tea-leaf" id="teaLeaf"></div>
+            <p style="margin: 20px 0; color: #666;">点击上方的茶叶图标体验交互效果</p>
+            
+            <div class="demo-controls">
+                <button class="control-btn" onclick="changeTeaColor()">变换茶色</button>
+                <button class="control-btn" onclick="rotateTeaLeaf()">旋转茶叶</button>
+                <button class="control-btn" onclick="resetTeaLeaf()">重置状态</button>
+                <button class="control-btn" onclick="showTeaInfo()">茶韵信息</button>
+            </div>
+            
+            <div class="demo-text" id="demoText">
+                点击上方按钮开始交互体验...
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 茶语数字博物馆 | 传承茶文化，品味茶生活</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">实验4：网页控制与交互 - 增强版</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 卡片加载动画控制
+        document.querySelectorAll('.nav-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const loadingId = this.id === 'customs-card' ? 'loading1' : 'loading2';
+                const loadingEl = document.getElementById(loadingId);
+                
+                // 显示加载动画
+                loadingEl.style.display = 'block';
+                
+                // 模拟加载延迟
+                setTimeout(() => {
+                    loadingEl.style.display = 'none';
+                }, 1500);
+            });
+        });
+
+        // 茶叶交互功能
+        const teaLeaf = document.getElementById('teaLeaf');
+        const demoText = document.getElementById('demoText');
+        let isRotated = false;
+        let colorIndex = 0;
+        const colors = [
+            'linear-gradient(135deg, #4caf50, #81c784)',
+            'linear-gradient(135deg, #81c784, #a5d6a7)',
+            'linear-gradient(135deg, #66bb6a, #4caf50)',
+            'linear-gradient(135deg, #388e3c, #2e7d32)'
+        ];
+        const teaInfos = [
+            "绿茶：未经发酵，保留天然成分",
+            "红茶：全发酵茶，汤色红亮",
+            "乌龙茶：半发酵，香气独特",
+            "白茶：轻微发酵，自然萎凋",
+            "黄茶：闷黄工艺，黄汤黄叶",
+            "黑茶：后发酵茶，越陈越香"
+        ];
+
+        function changeTeaColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            teaLeaf.style.background = colors[colorIndex];
+            demoText.textContent = `茶叶颜色已变换 → ${['翠绿', '嫩绿', '碧绿', '墨绿'][colorIndex]}`;
+            demoText.style.background = colors[colorIndex].replace('135deg', '45deg');
+            demoText.style.color = 'white';
+            demoText.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                demoText.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        function rotateTeaLeaf() {
+            if (!isRotated) {
+                teaLeaf.style.transform = 'rotate(135deg) scale(1.2)';
+                demoText.textContent = '茶叶已旋转45度，展现不同姿态';
+                isRotated = true;
+            } else {
+                teaLeaf.style.transform = 'rotate(45deg) scale(1.3)';
+                demoText.textContent = '茶叶已恢复初始角度';
+                isRotated = false;
+            }
+            teaLeaf.style.transition = 'transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }
+
+        function resetTeaLeaf() {
+            teaLeaf.style.transform = 'rotate(45deg) scale(1)';
+            teaLeaf.style.background = colors[0];
+            demoText.textContent = '茶叶状态已重置为初始状态';
+            demoText.style.background = '#f1f8e9';
+            demoText.style.color = '#2e7d32';
+            isRotated = false;
+            colorIndex = 0;
+        }
+
+        function showTeaInfo() {
+            const randomInfo = teaInfos[Math.floor(Math.random() * teaInfos.length)];
+            demoText.innerHTML = `<strong>茶知识：</strong>${randomInfo}`;
+            demoText.style.background = 'linear-gradient(135deg, #fff3e0, #ffecb3)';
+            demoText.style.color = '#5d4037';
+            
+            // 添加打字机效果
+            const text = demoText.textContent;
+            demoText.textContent = '';
+            let i = 0;
+            const typing = setInterval(() => {
+                if (i < text.length) {
+                    demoText.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typing);
+                }
+            }, 50);
+        }
+
+        // 茶叶点击效果
+        teaLeaf.addEventListener('click', function() {
+            this.style.transform = 'rotate(45deg) scale(1.4)';
+            demoText.textContent = '茶叶被点击！正在感受茶韵...';
+            demoText.style.background = 'linear-gradient(135deg, #e8f5e9, #c8e6c9)';
+            
+            setTimeout(() => {
+                this.style.transform = 'rotate(45deg) scale(1.3)';
+            }, 300);
+        });
+
+        // 页面滚动效果
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            document.querySelector('h1').style.transform = `translateY(${rate * 0.5}px)`;
+            
+            // 卡片随滚动淡入
+            const cards = document.querySelectorAll('.nav-card');
+            cards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < window.innerHeight * 0.8) {
+                    card.style.opacity = '1';
+                    card.style.transform = `translateY(0)`;
+                }
+            });
+        });
+
+        // 初始化卡片动画
+        document.querySelectorAll('.nav-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 500 + index * 200);
+        });
+
+        // 键盘快捷键
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case '1':
+                    document.getElementById('customs-card').click();
+                    break;
+                case '2':
+                    document.getElementById('art-card').click();
+                    break;
+                case 'c':
+                    changeTeaColor();
+                    break;
+                case 'r':
+                    resetTeaLeaf();
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
