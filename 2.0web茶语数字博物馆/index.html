@@ -296,7 +296,6 @@
         <div class="interactive-demo">
             <h3 class="demo-title">🍃 交互体验：动态茶韵</h3>
             <div class="tea-leaf" id="teaLeaf"></div>
-            <p style="margin: 20px 0; color: #666;">点击上方的茶叶图标体验交互效果</p>
             
             <div class="demo-controls">
                 <button class="control-btn" onclick="changeTeaColor()">变换茶色</button>
@@ -312,7 +311,6 @@
         
         <footer>
             <p>© 2023 茶语数字博物馆 | 传承茶文化，品味茶生活</p>
-            <p style="margin-top: 10px; font-size: 0.9rem;">实验4：网页控制与交互 - 增强版</p>
         </footer>
     </div>
     
@@ -408,16 +406,6 @@
             }, 50);
         }
 
-        // 茶叶点击效果
-        teaLeaf.addEventListener('click', function() {
-            this.style.transform = 'rotate(45deg) scale(1.4)';
-            demoText.textContent = '茶叶被点击！正在感受茶韵...';
-            demoText.style.background = 'linear-gradient(135deg, #e8f5e9, #c8e6c9)';
-            
-            setTimeout(() => {
-                this.style.transform = 'rotate(45deg) scale(1.3)';
-            }, 300);
-        });
 
         // 页面滚动效果
         window.addEventListener('scroll', function() {

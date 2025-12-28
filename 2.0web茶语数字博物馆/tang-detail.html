@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>唐代茶俗 - 茶语数字博物馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f0e9;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(to bottom, #f8f0e9, #e8dfd6);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        h1 {
+            color: #8b4513;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-family: "楷体", "KaiTi", "STKaiti", serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 4px;
+        }
+        
+        .dynasty-icon {
+            display: inline-block;
+            font-size: 1.5rem;
+            background-color: #8b4513;
+            color: #f8f0e9;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            color: #a0522d;
+            font-size: 1.2rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #8b4513;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: 2px solid #a0522d;
+            font-weight: bold;
+        }
+        
+        .back-btn:hover {
+            background-color: #a0522d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
+        }
+        
+        .detail-container {
+            background-color: #faf6f1;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #d2b48c;
+        }
+        
+        .detail-nav {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #d2b48c;
+            background-color: #f0e6d6;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+        
+        .nav-item {
+            padding: 12px 24px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            color: #8b4513;
+            font-weight: bold;
+        }
+        
+        .nav-item.active {
+            background-color: #faf6f1;
+            border-bottom: 3px solid #8b4513;
+            color: #8b4513;
+            font-weight: bold;
+        }
+        
+        .content-section {
+            display: none;
+            padding: 20px;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .scene-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #d2b48c, #8b4513);
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f8f0e9;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scene-image::before {
+            content: "唐代煎茶场景";
+            position: absolute;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .scene-image::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        h2 {
+            color: #8b4513;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d2b48c;
+            padding-bottom: 8px;
+            font-family: "楷体", "KaiTi", serif;
+        }
+        
+        h3 {
+            color: #a0522d;
+            margin: 20px 0 10px;
+            font-family: "楷体", "KaiTi", serif;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background-color: #f0e6d6;
+            padding: 20px;
+            border-left: 5px solid #8b4513;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tea-type {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tea-type-item {
+            flex: 1;
+            min-width: 200px;
+            background-color: #f0e6d6;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #d2b48c;
+        }
+        
+        .tea-type-item h4 {
+            color: #8b4513;
+            margin-bottom: 8px;
+        }
+        
+        .cultural-feature {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-item {
+            background-color: #f8f0e9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #8b4513;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-item h4 {
+            color: #8b4513;
+            margin-bottom: 8px;
+        }
+        
+        .historical-note {
+            background-color: #8b4513;
+            color: #f8f0e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .detail-nav {
+                flex-direction: column;
+            }
+            
+            .cultural-feature {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>唐代茶俗</h1>
+            <div class="dynasty-icon">唐 · 618-907</div>
+            <p class="subtitle">探索中国茶文化的形成与兴盛</p>
+            <a href="tea-customs.html" class="back-btn">返回茶俗馆</a>
+        </header>
+        
+        <div class="detail-container">
+            <div class="detail-nav">
+                <button class="nav-item active" data-target="scene">茶俗场景</button>
+                <button class="nav-item" data-target="origin">茶事溯源</button>
+                <button class="nav-item" data-target="influence">文化影响</button>
+            </div>
+            
+            <div id="scene" class="content-section active">
+                <h2>唐代茶俗场景</h2>
+                <div class="scene-image"></div>
+                <p>唐代是中国茶文化真正的形成期，饮茶从单纯的解渴养生发展为一种文化修养和精神享受。陆羽《茶经》的问世标志着中国茶道文化的正式确立。</p>
+                
+                <div class="highlight">
+                    <p>唐代以"煎茶法"为主，将茶饼碾成粉末，放入沸水中烹煮，并加入盐、姜、枣、橘皮等佐料，形成独特的唐代茶汤风味。</p>
+                </div>
+                
+                <h3>唐代主要茶类</h3>
+                <div class="tea-type">
+                    <div class="tea-type-item">
+                        <h4>饼茶</h4>
+                        <p>唐代主流茶类，经蒸青、压制成饼状，便于储存和运输，饮用前需炙烤、碾碎。</p>
+                    </div>
+                    <div class="tea-type-item">
+                        <h4>散茶</h4>
+                        <p>未压制成饼的茶叶，在民间较为常见，制作工艺相对简单。</p>
+                    </div>
+                    <div class="tea-type-item">
+                        <h4>末茶</h4>
+                        <p>将茶饼碾磨成细末，是煎茶法的主要原料，也为宋代点茶法奠定了基础。</p>
+                    </div>
+                </div>
+                
+                <p>唐代茶宴、茶会盛行于宫廷和文人阶层，成为重要的社交活动。寺院茶礼也开始形成，茶与禅宗结下了不解之缘。</p>
+                
+                <h3>茶器发展</h3>
+                <p>唐代茶具开始系统化，陆羽在《茶经》中列出了二十四器，包括风炉、鍑、碾、罗、则、碗等，奠定了中国茶具的基本体系。</p>
+            </div>
+            
+            <div id="origin" class="content-section">
+                <h2>唐代茶事溯源</h2>
+                <p>唐代是中国茶文化发展史上的里程碑时期，茶事活动从南方扩展到全国，形成了完整的茶文化体系。</p>
+                
+                <h3>陆羽与《茶经》</h3>
+                <p>陆羽（733-804）被尊为"茶圣"，其所著《茶经》是世界第一部茶学专著，系统阐述了茶的起源、生产、加工、烹煮、饮用及茶具、茶道等内容。</p>
+                
+                <div class="highlight">
+                    <p>《茶经》的问世标志着中国茶文化从经验阶段上升到理论阶段，对后世茶文化发展产生了深远影响。</p>
+                </div>
+                
+                <h3>煎茶法的形成</h3>
+                <p>唐代煎茶法取代了早期的煮茶法，工艺更加精细：先将茶饼炙烤、碾碎、过筛，待水初沸时加盐，二沸时舀出一瓢水备用，投入茶末，三沸时倒入之前舀出的水止沸，即可分茶饮用。</p>
+                
+                <h3>茶政与茶税</h3>
+                <p>唐代开始实施茶政管理，德宗建中三年（782年）首次征收茶税。此后茶税成为国家财政的重要来源，也促进了茶叶贸易的繁荣。</p>
+                
+                <h3>茶马互市的起源</h3>
+                <p>唐代后期，中原地区与边疆民族的茶马互市开始形成，用茶叶交换马匹，成为重要的边疆贸易形式。</p>
+            </div>
+            
+            <div id="influence" class="content-section">
+                <h2>唐代茶文化影响</h2>
+                <p>唐代茶文化不仅在国内蓬勃发展，还通过文化交流传播到周边国家和地区，产生了深远影响。</p>
+                
+                <div class="cultural-feature">
+                    <div class="feature-item">
+                        <h4>文人茶道</h4>
+                        <p>唐代文人将茶与诗、书、画相结合，创造了独特的文人茶道，李白、白居易、卢仝等诗人都有咏茶佳作传世。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>寺院茶礼</h4>
+                        <p>禅宗寺院形成了严格的饮茶礼仪，茶成为坐禅修行的重要辅助，"茶禅一味"的思想开始萌芽。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>宫廷茶宴</h4>
+                        <p>唐代宫廷盛行茶宴，皇帝常以茶赐群臣，形成了一套宫廷茶礼制度，体现了茶文化的尊贵地位。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>对外传播</h4>
+                        <p>唐代茶文化随遣唐使传播到日本、朝鲜等地，为这些国家茶道的形成奠定了基础。</p>
+                    </div>
+                </div>
+                
+                <div class="historical-note">
+                    <p>唐代茶文化奠定了中国茶道的基础，其煎茶法、茶具体系、茶道精神对后世产生了千年影响。</p>
+                </div>
+                
+                <h3>唐代著名茶人</h3>
+                <p>除陆羽外，唐代还有众多茶文化代表人物：皎然和尚提出"茶道"概念；卢仝《七碗茶歌》将饮茶体验升华到精神境界；白居易一生爱茶，留下大量茶诗。</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 切换内容标签
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除所有active类
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // 添加active类
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+        
+        // 添加场景图像动画
+        const sceneImage = document.querySelector('.scene-image');
+        if (sceneImage) {
+            sceneImage.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            sceneImage.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+        
+        // 页面加载动画
+        window.addEventListener('load', function() {
+            document.body.style.opacity = 0;
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = 1;
+            }, 100);
+        });
+    </script>
+</body>
+</html>

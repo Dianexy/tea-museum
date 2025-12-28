@@ -242,23 +242,6 @@
 	</style>
 	
 	<script>
-	    // 页面加载后添加交互提示
-	    document.addEventListener('DOMContentLoaded', function() {
-	        // 在茶俗场景部分添加提示
-	        const sceneSection = document.getElementById('scene');
-	        if (sceneSection) {
-	            const hint = document.createElement('div');
-	            hint.className = 'interactive-hint';
-	            hint.innerHTML = `
-	                💡 <strong>交互体验已启用！</strong> 向下滚动体验：
-	                <br>1. <em>宋代点茶模拟器</em> - 体验七步点茶工艺
-	                <br>2. <em>斗茶小游戏</em> - 与宋代文人比拼茶艺
-	                <br>3. <em>茶具鉴赏</em> - 3D查看宋代茶具
-	                <br>🎮 提示：可使用键盘快捷键（空格、数字键1-3、方向键）
-	            `;
-	            sceneSection.appendChild(hint);
-	        }
-	        
 	        // 添加滚动监听，触发交互动画
 	        let animated = false;
 	        window.addEventListener('scroll', function() {

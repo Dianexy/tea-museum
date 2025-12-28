@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1000 700"
+  width="100%"
+  height="100%">
+
+  <!-- 背景 -->
+  <rect width="1000" height="700" fill="#f1f8e9"/>
+
+  <!-- 中国轮廓（简化艺术版，适合展示） -->
+  <path
+    d="
+      M180,180
+      Q260,120 360,150
+      Q460,90 560,130
+      Q640,110 720,150
+      Q800,190 820,260
+      Q850,330 800,400
+      Q760,460 700,500
+      Q640,540 560,560
+      Q480,580 400,560
+      Q330,540 270,500
+      Q220,460 190,410
+      Q150,350 160,290
+      Q170,230 180,180
+      Z
+    "
+    fill="#c8e6c9"
+    stroke="#4caf50"
+    stroke-width="6"
+  />
+
+  <!-- 内部装饰线（山脉/茶脉感觉） -->
+  <path d="M300 260 Q420 220 520 260 T740 300"
+        fill="none"
+        stroke="#81c784"
+        stroke-width="3"
+        stroke-dasharray="8,8"/>
+
+  <path d="M280 360 Q420 400 560 380 T760 420"
+        fill="none"
+        stroke="#81c784"
+        stroke-width="3"
+        stroke-dasharray="8,8"/>
+
+  <!-- 标题水印 -->
+  <text x="500" y="680"
+        text-anchor="middle"
+        font-size="20"
+        fill="#a5d6a7"
+        font-family="STKaiti, KaiTi, serif">
+    中国茶产分布图 · 茶语数字博物馆
+  </text>
+</svg>
