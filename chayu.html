@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>茶艺馆 · 茶语数字博物馆</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Microsoft YaHei",sans-serif;
+}
+body{
+    background:#e8f5e9;
+    color:#333;
+}
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 20px;
+}
+header{
+    text-align:center;
+    margin-bottom:30px;
+}
+h1{
+    font-size:2.8rem;
+    color:#1b5e20;
+    font-family:"楷体","STKaiti",serif;
+}
+.subtitle{
+    color:#2e7d32;
+    margin-top:10px;
+}
+.back-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 20px;
+    background:#2e7d32;
+    color:#fff;
+    border-radius:6px;
+    text-decoration:none;
+}
+.search-box{
+    max-width:400px;
+    margin:20px auto;
+}
+.search-box input{
+    width:100%;
+    padding:12px 18px;
+    border-radius:25px;
+    border:2px solid #4caf50;
+    outline:none;
+}
+
+/* ===== 茶区展示板 ===== */
+.map-card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+.china-map{
+    position:relative;
+    width:100%;
+    height:420px;
+    background:linear-gradient(135deg,#f1f8e9,#e8f5e9);
+    border-radius:14px;
+}
+
+/* 省份标记 */
+.province{
+    position:absolute;
+    padding:8px 18px;
+    background:#4caf50;
+    color:#fff;
+    border-radius:20px;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+.province:hover{
+    background:#2e7d32;
+    transform:scale(1.15);
+    z-index:5;
+}
+
+/* 悬浮信息 */
+.tooltip{
+    position:absolute;
+    width:220px;
+    background:#fff;
+    border-radius:10px;
+    padding:12px;
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+    display:none;
+    z-index:10;
+}
+.tooltip h3{
+    color:#1b5e20;
+}
+.tooltip p{
+    font-size:.9rem;
+    margin-top:6px;
+}
+.tooltip a{
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 14px;
+    background:#4caf50;
+    color:#fff;
+    border-radius:6px;
+    font-size:.85rem;
+    text-decoration:none;
+}
+
+/* ===== 其他板块 ===== */
+section{
+    margin-top:50px;
+}
+section h2{
+    text-align:center;
+    color:#1b5e20;
+    margin-bottom:25px;
+}
+.explore-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+.explore-card{
+    background:#f1f8e9;
+    padding:25px;
+    border-radius:14px;
+    text-align:center;
+    text-decoration:none;
+    color:#1b5e20;
+    box-shadow:0 6px 14px rgba(0,0,0,.1);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <h1>茶艺馆</h1>
+    <p class="subtitle">中国主要茶区分布示意与茶艺体验</p >
+    <a href=" " class="back-btn">返回首页</a >
+</header>
+
+<div class="search-box">
+    <input type="text" placeholder="搜索茶区：浙江 / 福建 / 云南">
+</div>
+
+<div class="map-card">
+<div class="china-map">
+
+<!-- 省份示意位置 -->
+<div class="province" style="top:90px;left:70%"
+ data-name="浙江" data-teas="西湖龙井、安吉白茶"
+ data-link="zhejiang-detail.html">浙江</div>
+
+<div class="province" style="top:150px;left:75%"
+ data-name="福建" data-teas="武夷岩茶、铁观音"
+ data-link="fujian-detail.html">福建</div>
+
+<div class="province" style="top:260px;left:45%"
+ data-name="云南" data-teas="普洱茶、滇红"
+ data-link="yunnan-detail.html">云南</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+</div>
+</div>
+
+<section>
+<h2>快速探索茶区</h2>
+<div class="explore-grid">
+<a class="explore-card" href="zhejiang-detail.html"><h3>浙江</h3><p>龙井 · 安吉白茶</p ></a >
+<a class="explore-card" href="fujian-detail.html"><h3>福建</h3><p>岩茶 · 铁观音</p ></a >
+<a class="explore-card" href="yunnan-detail.html"><h3>云南</h3><p>普洱 · 滇红</p ></a >
+</div>
+</section>
+
+</div>
+
+<script>
+const tooltip=document.getElementById("tooltip");
+document.querySelectorAll(".province").forEach(p=>{
+    p.onmouseenter=()=>{
+        tooltip.innerHTML=`<h3>${p.dataset.name}</h3>
+        <p>${p.dataset.teas}</p >
+        <a href="${p.dataset.link}">查看详情</a >`;
+        tooltip.style.display="block";
+        tooltip.style.left=p.offsetLeft+40+"px";
+        tooltip.style.top=p.offsetTop+"px";
+    }
+    p.onmouseleave=()=>tooltip.style.display="none";
+});
+</script>
+
+</body>
+</html>
